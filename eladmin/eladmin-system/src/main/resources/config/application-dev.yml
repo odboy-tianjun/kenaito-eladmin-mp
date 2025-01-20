@@ -26,36 +26,36 @@ server:
   # GRACEFUL (优雅): 当应用程序以"GRACEFUL"模式关闭时，它不会接受新的请求且会尝试完成所有正在进行的请求和处理，然后才会终止。这种方式适用于那些可能需要一些时间来清理资源或完成正在进行的任务的场景。
   # IMMEDIATE(立即): 当应用程序以"IMMEDIATE"模式关闭时，它会立即终止，而不管当前是否有任何活动任务或请求。这种方式适用于那些可以立即停止而不会造成严重问题的情况。
   shutdown: graceful
-#mybatis-plus:
-#  configuration:
-#    # 开启 Mybatis 二级缓存，默认为 true
-#    cache-enabled: false
-#    # 设置本地缓存作用域, Mybatis 一级缓存, 默认为 SESSION
-#    # 同一个 session 相同查询语句不会再次查询数据库
-#    # 微服务中, 建议设置为STATEMENT, 即关闭一级缓存
-#    local-cache-scope: STATEMENT
-#    # 是否开启自动驼峰命名规则（camel case）映射, 即从经典数据库列名 A_COLUMN（下划线命名） 到经典 Java 属性名 aColumn（驼峰命名） 的类似映射
-#    map-underscore-to-camel-case: true
-#    # Sql日志
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#  # 启动时是否检查 MyBatis XML 文件的存在, 默认不检查
-#  check-config-location: true
-#  # MyBatis Mapper 所对应的 XML 文件位置
-#  # Maven 多模块项目的扫描路径需以 classpath*: 开头 （即加载多个 jar 包下的 XML 文件）
-#  mapper-locations: classpath*:/mapper/**/*.xml
-#  # MyBatis-Plus 全局策略中的 DB 策略配置
-#  global-config:
-#    db-config:
-#      # 逻辑已删除值(逻辑删除下有效)
-#      logic-delete-value: 0
-#      # 逻辑未删除值(逻辑删除下有效)
-#      logic-not-delete-value: 1
-#      # 全局默认主键类型, 这里为自增主键
-#      id-type: auto
-#      # 表名是否使用驼峰转下划线命名,只对表名生效
-#      table-underline: true
-#    # 是否控制台 print mybatis-plus 的 LOGO
-#    banner: true
+mybatis-plus:
+  configuration:
+    # 开启 Mybatis 二级缓存，默认为 true
+    cache-enabled: false
+    # 设置本地缓存作用域, Mybatis 一级缓存, 默认为 SESSION
+    # 同一个 session 相同查询语句不会再次查询数据库
+    # 微服务中, 建议设置为STATEMENT, 即关闭一级缓存
+    local-cache-scope: STATEMENT
+    # 是否开启自动驼峰命名规则（camel case）映射, 即从经典数据库列名 A_COLUMN（下划线命名） 到经典 Java 属性名 aColumn（驼峰命名） 的类似映射
+    map-underscore-to-camel-case: true
+    # Sql日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 启动时是否检查 MyBatis XML 文件的存在, 默认不检查
+  check-config-location: true
+  # MyBatis Mapper 所对应的 XML 文件位置
+  # Maven 多模块项目的扫描路径需以 classpath*: 开头 （即加载多个 jar 包下的 XML 文件）
+  mapper-locations: classpath*:/mapper/**/*.xml
+  # MyBatis-Plus 全局策略中的 DB 策略配置
+  global-config:
+    db-config:
+      # 逻辑已删除值(逻辑删除下有效)
+      logic-delete-value: 0
+      # 逻辑未删除值(逻辑删除下有效)
+      logic-not-delete-value: 1
+      # 全局默认主键类型, 这里为自增主键
+      id-type: auto
+      # 表名是否使用驼峰转下划线命名,只对表名生效
+      table-underline: true
+    # 是否控制台 print mybatis-plus 的 LOGO
+    banner: true
 # 配置数据源
 spring:
   application:
@@ -77,21 +77,10 @@ spring:
         # 是否启用Redis存储(关闭防止出现 Multiple Spring Data modules found, entering strict repository configuration mode)
         enabled: false
   datasource:
-    system:
-      driverClassName: com.p6spy.engine.spy.P6SpyDriver
-      url: jdbc:p6spy:mysql://192.168.235.102:3308/eladmin?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
-      username: root
-      password: 123456
-    devops:
-      driverClassName: com.p6spy.engine.spy.P6SpyDriver
-      url: jdbc:p6spy:mysql://192.168.235.102:3308/eladmin?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
-      username: root
-      password: 123456
-    vital:
-      driverClassName: com.p6spy.engine.spy.P6SpyDriver
-      url: jdbc:p6spy:mysql://192.168.235.102:3308/eladmin?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
-      username: root
-      password: 123456
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:mysql://192.168.235.102:3308/eladmin?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
   redis:
     # 数据库索引
     database: ${REDIS_DB:1}

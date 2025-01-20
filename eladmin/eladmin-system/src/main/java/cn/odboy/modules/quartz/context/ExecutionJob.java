@@ -55,7 +55,7 @@ public class ExecutionJob extends QuartzJobBean {
     /**
      * 此处仅供参考，可根据任务执行情况自定义线程池参数
      */
-    private final ThreadPoolTaskExecutor executor = SpringBeanHolder.getBean("el-async");
+    private final ThreadPoolTaskExecutor executor = SpringBeanHolder.getBean("elAsync");
 
     @Override
     public void executeInternal(JobExecutionContext context) {

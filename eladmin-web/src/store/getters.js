@@ -17,7 +17,6 @@ const getters = {
   updateAvatarApi: state => state.api.updateAvatarApi,
   websocketApi: state => state.api.websocketApi,
   qiNiuUploadApi: state => state.api.qiNiuUploadApi,
-  sqlApi: state => state.api.sqlApi,
   swaggerApi: state => state.api.swaggerApi,
   sidebarRouters: state => state.permission.sidebarRouters
 }

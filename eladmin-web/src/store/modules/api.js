@@ -14,8 +14,6 @@ const api = {
     qiNiuUploadApi: baseUrl + '/api/qiNiuContent',
     // websocket
     websocketApi: baseUrl + '/webSocket/{sid}',
-    // Sql 监控
-    sqlApi: baseUrl + '/druid/index.html',
     // swagger
     swaggerApi: baseUrl + '/doc.html',
     // 文件上传

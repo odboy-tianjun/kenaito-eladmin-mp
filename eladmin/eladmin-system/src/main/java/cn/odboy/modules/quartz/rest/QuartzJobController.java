@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -134,7 +135,8 @@ public class QuartzJobController {
     private void checkBean(String beanName) {
         // 避免调用攻击者可以从SpringContextHolder获得控制jdbcTemplate类
         // 并使用getDeclaredMethod调用jdbcTemplate的queryForMap函数，执行任意sql命令。
-        if (!SpringBeanHolder.getAllServiceBeanName().contains(beanName)) {
+        List<String> allServiceBeanName = SpringBeanHolder.getAllServiceBeanName();
+        if (!allServiceBeanName.contains(beanName)) {
             throw new BadRequestException("非法的 Bean，请重新输入！");
         }
     }
